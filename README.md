@@ -1,2 +1,2 @@
 # SSL
-Sintaxis y semantica de los lenguajes
+Sintaxis y Semantica de los Lenguajes
