@@ -1,0 +1,56 @@
+
+
+,			Letra, 		  	Dígito, 		Operador,	  	Puntuación,	 	Espacio		  	Dos puntos,		Igual,			Otro,	 	  	EOF	
+ESTADO_INICIAL,		ESTADO_ID,	  	ESTADO_CONSTANTE,	ESTADO_OPERADOR,	ESTADO_PUNTUACION, 	ESTADO_INICIAL,   	ASIGNACION_INICIO,	ERROR_ASIGNACION,	ERROR_GENERAL,		ESTADO_EOF	
+ESTADO_ID,		ESTADO_ID,	  	ESTADO_ID,	 	ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,	 	ERROR_GENERAL,		ESTADO_INICIAL	
+ESTADO_CONSTANTE,	ESTADO_INICIAL,	  	ESTADO_CONSTANTE,	ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ERROR_GENERAL,		ESTADO_INICIAL	
+ESTADO_OPERADOR,	ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ERROR_GENERAL,		ESTADO_INICIAL	
+ESTADO_PUNTUACION,	ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ERROR_GENERAL,		ESTADO_INICIAL	
+ASIGNACION INICIO,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION,	ERROR_ASIGNACION	
+ASIGNACION FINAL,	ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ERROR_GENERAL,		ESTADO_INICIAL	
+ERROR GENERAL,		ERROR_GENERAL,	  	ERROR_GENERAL,		ERROR_GENERAL,		ERROR_GENERAL,		ERROR_GENERAL,		ERROR_GENERAL,		ERROR_GENERAL,		ERROR_GENERAL,		ESTADO_INICIAL	
+ERROR_ASIGNACION,	ESTADO_INICIAL,	  	ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_INICIAL,		ESTADO_EOF	
+										
+										
+# Documentación de la Tabla de Transición del Escáner Léxico										
+										
+## Introducción										
+										
+La tabla de transición se utiliza en un escáner léxico para determinar el próximo estado en función del carácter actual y el estado actual del escáner. La tabla está organizada en función de diferentes columnas que representan los tipos de caracteres.										
+										
+## Definiciones										
+										
+- **Estados**: Representan las etapas en el proceso de análisis léxico.										
+- **Columnas**: Representan el tipo de carácter leído.										
+										
+## Tabla de Transición										
+										
+La tabla de transición está definida como una matriz de estados, donde cada fila representa un estado y cada columna representa un tipo de carácter. La siguiente es la descripción de la tabla de transición utilizada:										
+										
+### Columnas										
+										
+- **Letra** (`COL_LETRA`): Carácter alfabético (`a-z`, `A-Z`).										
+- **Dígito** (`COL_DIGITO`): Carácter numérico (`0-9`).										
+- **Operador** (`COL_OPERADOR`): Carácter operador (`+`, `-`, `*`, `/`, `%`).										
+- **Puntuación** (`COL_PUNTUACION`): Carácter de puntuación (`;`, `,`, `(`, `)`).										
+- **Espacio** (`COL_ESPACIO`): Carácter de espacio en blanco (` `, `\n`, `\t`, `\r`).										
+- **Dos puntos** (`COL_DOSPUNTOS`): Carácter de dos puntos (`:`).										
+- **Igual** (`COL_IGUAL`): Carácter de igual (`=`).										
+- **Otro** (`COL_OTRO`): Cualquier otro carácter que no encaje en las categorías anteriores.										
+- **EOF** (`COL_EOF`): Fin de archivo.										
+										
+### Estados										
+										
+- **ESTADO_INICIAL**: Estado inicial del escáner.										
+- **ESTADO_ID**: Estado para identificar identificadores.										
+- **ESTADO_CONSTANTE**: Estado para identificar constantes numéricas.										
+- **ESTADO_OPERADOR**: Estado para identificar operadores.										
+- **ESTADO_PUNTUACION**: Estado para identificar puntuaciones.										
+- **ESTADO_ASIGNACION_INICIO**: Estado inicial para el reconocimiento de asignaciones (`:=`).										
+- **ESTADO_ASIGNACION_FINAL**: Estado final para el reconocimiento de asignaciones (`:=`).										
+- **ESTADO_ERROR_GENERAL**: Estado para identificar errores generales.										
+- **ESTADO_EOF**: Estado para el fin de archivo.										
+- **ESTADO_INICIAL** es el estado en el que el escáner comienza y puede transitar a otros estados dependiendo del tipo de carácter leído.										
+- **ESTADO_ERROR_GENERAL** se usa para manejar errores y transitar a un estado de error general si se encuentra un carácter inesperado.										
+- **ESTADO_EOF** indica el final del archivo y el escáner debe terminar su proceso.										
+										

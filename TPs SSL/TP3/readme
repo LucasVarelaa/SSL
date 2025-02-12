@@ -1,0 +1,9 @@
+## Trabajo Práctico Nº 3 – Escáner Hecho con Flex
+
+## Compilación y Ejecución en linux
+
+
+```sh
+Para crear los archivos scanner.c y scanner.h se tiene que hacer " flex scanner.l "
+Luego se compila gcc -g -Wall scanner.c main.c -o scantest -lfl
+Por ultimo se ejecuta el archivo scantest de esta forma " ./scantest <entrada.txt> salidaPrueba.txt "
